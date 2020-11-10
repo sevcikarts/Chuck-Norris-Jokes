@@ -20,8 +20,6 @@ function App() {
   const [joke, setJoke] = useState("");
   const [error, setError] = useState("");
 
-
-
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
@@ -44,36 +42,33 @@ function App() {
     setJoke(userData.data.data.value);
   }, [userData.data.data.value]);
 
-  
-
   return (
-   
     <div className="App">
       <header className="App-header">
         <div className="container">
           <Joke joke={joke} />
-        <div className="chuck">
-          <Error error={error} />
+          <div className="chuck">
+            <Error error={error} />
+          </div>
         </div>
-        </div>
-        <SearchBar
-          query={query}
-          setQuery={setQuery}
-          setRandomJoke={setRandomJoke}
-          setError={setError}
-        />
-        
-        <SearchSelect
-          setQuery={setQuery}
-          setRandomJoke={setRandomJoke}
-          setError={setError}
+        <div className="controll">
+          <SearchBar
+            query={query}
+            setQuery={setQuery}
+            setRandomJoke={setRandomJoke}
+            setError={setError}
           />
-        
-        <SearchButton
-         setQuery={setQuery}/>
+
+          <SearchSelect
+            setQuery={setQuery}
+            setRandomJoke={setRandomJoke}
+            setError={setError}
+          />
+
+          <SearchButton setQuery={setQuery} setError={setError} />
+        </div>
       </header>
     </div>
-    
   );
 }
 

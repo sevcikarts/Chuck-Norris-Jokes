@@ -13,17 +13,20 @@
   color: white;
 }
 
-
-.container{
+.container {
   max-width: 1200px;
   min-height: 200px;
- 
 }
 
-.controll{
-   margin: 25px;
+.controll {
+  display: flex;
+  flex-direction: column;
 }
-.chuck{
+.inControll{
+  margin: 25px;
+
+}
+.chuck {
   color: orange;
 }
 
@@ -32,10 +35,20 @@
   -webkit-animation: random 10s infinite;
   animation: random 30s infinite;
 }
-@keyframes  random {
- 15% { color: rgb(189, 93, 4); } 
- 30% { color: rgb(235, 76, 28); } 
- 45% { color: rgb(226, 55, 3); } 
- 60% { color: rgb(204, 143, 12); }
- 75% { color: rgb(194, 51, 51); }  
+@keyframes random {
+  15% {
+    color: rgb(189, 93, 4);
+  }
+  30% {
+    color: rgb(235, 76, 28);
+  }
+  45% {
+    color: rgb(226, 55, 3);
+  }
+  60% {
+    color: rgb(204, 143, 12);
+  }
+  75% {
+    color: rgb(194, 51, 51);
+  }
 }

@@ -14,6 +14,7 @@ const SearchBar = ({ query, setQuery, setRandomJoke, setError }) => {
     if (query.length > 2) {
       setRandomJoke([""]);
       setError("");
+     
       axios
         .get(`https://api.chucknorris.io/jokes/search?query=${query}`)
         .then((response) => {
@@ -32,11 +33,11 @@ const SearchBar = ({ query, setQuery, setRandomJoke, setError }) => {
   };
   return (
     
-    <div>
+    <div className="inControll">
      <form noValidate autoComplete="off" onSubmit={handleSearch}>
      <TextField
       onChange={handlechange}
-      style={{ width: "250px" }}
+      style={{ width: "300px"}}
       id="standard-basic"
       label="random by query"
       type="text"

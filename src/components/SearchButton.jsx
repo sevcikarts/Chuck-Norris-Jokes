@@ -3,16 +3,21 @@ import {useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { fetchData } from ".././redux/actions/dataActions";
 
-const SearchButton = ({setQuery}) => {
+
+const SearchButton = ({setQuery,setError }) => {
    const dispatch = useDispatch();
      
+
+
     return (
-        <div>
+        <div className="inControll">
             <Button 
-            variant="contained"
+            size="large"
+            variant="contained" 
             color="primary"
-            style={{width:"250px"}}
-            onClick={()=>dispatch(fetchData(),setQuery(""))}> Random Joke</Button>
+            style={{width: "300px",
+                    fontSize: "20px"}}
+            onClick={()=>dispatch(fetchData(),setQuery(""),setError(""))}> Random Joke</Button>
         </div>
     )
 }
