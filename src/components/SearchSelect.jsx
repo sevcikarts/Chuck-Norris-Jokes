@@ -6,7 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 
-const SearchSelect = React.memo(({ setRandomJoke, setError, setQuery }) => {
+const SearchSelect = React.memo(({ setJoke, setError, setQuery }) => {
   const userData = useSelector((state) => {
     return { category: state.categoryReducer };
   });
@@ -14,13 +14,12 @@ const SearchSelect = React.memo(({ setRandomJoke, setError, setQuery }) => {
   const handleSelect = (e) => {
     const query = e.target.value;
     if (query.length > 2) {
-      setRandomJoke([""]);
       setError("");
       setQuery("");
       axios
         .get(`https://api.chucknorris.io/jokes/random?category=${query}`)
         .then((response) => {
-          setRandomJoke([response.data.value]);
+          setJoke([response.data.value]);
         });
     }
   };

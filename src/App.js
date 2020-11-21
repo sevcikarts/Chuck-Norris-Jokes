@@ -1,5 +1,4 @@
 import "./App.css";
-import _ from "lodash";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCategory } from "./redux/actions/categoryActions";
@@ -18,7 +17,6 @@ function App() {
   });
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
-  const [randomJoke, setRandomJoke] = useState([""]);
   const [joke, setJoke] = useState("");
   const [error, setError] = useState("");
   const [listOfJokes, setlistOfJokes] = useState([{
@@ -26,7 +24,7 @@ function App() {
     id: ""
   }]);
   const [checkedHistry, setCheckedHistry] = useState(false);
-  const [inProp, setInProp] = useState(false);
+ 
 
   useEffect(() => {
     dispatch(fetchData());
@@ -36,15 +34,8 @@ function App() {
     dispatch(fetchCategory());
   }, [dispatch]);
 
-  // search random joke
-  useEffect(() => {
-    let clearArray = randomJoke.filter(function (e) {
-      return e.replace(" ");
-    });
-    return setJoke(_.sample(clearArray));
-  }, [randomJoke]);
-
-  // random load joke
+  
+  //load random joke
   useEffect(() => {
     setJoke(userData.data.data.value);
   }, [userData.data.data.value]);
@@ -56,8 +47,6 @@ function App() {
         <div className="container">
        
          <Joke joke={joke} setlistOfJokes={setlistOfJokes} 
-          setInProp={setInProp}
-          inProp={inProp}
           />
           <div className="chuck">
             
@@ -68,19 +57,17 @@ function App() {
           <SearchBar
             query={query}
             setQuery={setQuery}
-            setRandomJoke={setRandomJoke}
             setError={setError}
             setJoke={setJoke}
           />
 
           <SearchSelect
             setQuery={setQuery}
-            setRandomJoke={setRandomJoke}
+            setJoke={setJoke}
             setError={setError}
           />
 
-          <SearchButton setQuery={setQuery} setError={setError}
-          setInProp={setInProp} />
+          <SearchButton setQuery={setQuery} setError={setError}/>
           <CheckedHistory
             checkedHistry={checkedHistry}
             setCheckedHistry={setCheckedHistry}

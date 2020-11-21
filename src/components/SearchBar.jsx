@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import _ from "lodash";
 
 const SearchBar = React.memo(
-  ({ query, setQuery, setRandomJoke, setError, setJoke }) => {
+  ({ query, setQuery, setError, setJoke }) => {
     const handlechange = (e) => {
       e.preventDefault();
       setQuery(e.target.value);
@@ -13,7 +13,6 @@ const SearchBar = React.memo(
     const handleSearch = (e) => {
       e.preventDefault();
       if (query.length > 2) {
-        setRandomJoke([""]);
         setError("");
 
         axios
