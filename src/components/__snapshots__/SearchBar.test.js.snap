@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapShot 1`] = `
+<div
+  className="inControll"
+>
+  <form
+    autoComplete="off"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <WithStyles(ForwardRef(TextField))
+      id="standard-basic"
+      label="random by query"
+      onChange={[Function]}
+      style={
+        Object {
+          "width": "300px",
+        }
+      }
+      type="text"
+    />
+  </form>
+</div>
+`;

@@ -6,14 +6,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 
-const SearchSelect = ({ setRandomJoke, setError, setQuery }) => {
+const SearchSelect = React.memo(({ setRandomJoke, setError, setQuery }) => {
   const userData = useSelector((state) => {
     return { category: state.categoryReducer };
   });
 
   const handleSelect = (e) => {
-    e.preventDefault();
-
     const query = e.target.value;
     if (query.length > 2) {
       setRandomJoke([""]);
@@ -33,7 +31,6 @@ const SearchSelect = ({ setRandomJoke, setError, setQuery }) => {
         <InputLabel color="primary" id="label">
           random by category
         </InputLabel>
-
         <Select
           displayEmpty
           labelId="label"
@@ -50,6 +47,6 @@ const SearchSelect = ({ setRandomJoke, setError, setQuery }) => {
       </FormControl>
     </div>
   );
-};
+});
 
 export default SearchSelect;

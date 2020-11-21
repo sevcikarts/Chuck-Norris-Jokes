@@ -1,19 +1,23 @@
 import React from "react";
 import reactStringReplace from "react-string-replace";
 
-const Joke = ({ joke,setNative }) => {
-  const Joke = () => {
+const Joke = ({ joke, setInProp, inProp }) => {
+  const jokeLoad = () => {
     if (joke) {
-      const styledJoke = reactStringReplace(joke, /(Chuck Norris)/g, (match,i) => (
-        <strong key={i} className="chuck">{match}</strong>
-        
-      ));
+      const styledJoke = reactStringReplace(
+        joke,
+        /(Chuck Norris)/g,
+        (match, i) => (
+          <strong key={i} className="chuck">
+            {match}
+          </strong>
+        )
+      );
       return styledJoke;
     }
-
   };
 
-  return <div>{Joke()}</div>;
+  return <div>{jokeLoad()}</div>;
 };
 
 export default Joke;

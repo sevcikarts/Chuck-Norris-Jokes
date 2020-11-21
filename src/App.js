@@ -9,6 +9,8 @@ import SearchSelect from "./components/SearchSelect.jsx";
 import SearchButton from "./components/SearchButton.jsx";
 import Joke from "./view/Joke";
 import Error from "./view/Error";
+import ListOfJokes from "./components/ListOfJokes.jsx";
+import CheckedHistory from "./components/CheckedHistory.jsx";
 
 function App() {
   const userData = useSelector((state) => {
@@ -19,6 +21,12 @@ function App() {
   const [randomJoke, setRandomJoke] = useState([""]);
   const [joke, setJoke] = useState("");
   const [error, setError] = useState("");
+  const [listOfJokes, setlistOfJokes] = useState([{
+    joke:"",
+    id: ""
+  }]);
+  const [checkedHistry, setCheckedHistry] = useState(false);
+  const [inProp, setInProp] = useState(false);
 
   useEffect(() => {
     dispatch(fetchData());
@@ -33,8 +41,7 @@ function App() {
     let clearArray = randomJoke.filter(function (e) {
       return e.replace(" ");
     });
-    let jokeIn = _.sample(clearArray);
-    setJoke(jokeIn);
+    return setJoke(_.sample(clearArray));
   }, [randomJoke]);
 
   // random load joke
@@ -44,10 +51,16 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header">  
+     
         <div className="container">
-          <Joke joke={joke} />
+       
+         <Joke joke={joke} setlistOfJokes={setlistOfJokes} 
+          setInProp={setInProp}
+          inProp={inProp}
+          />
           <div className="chuck">
+            
             <Error error={error} />
           </div>
         </div>
@@ -57,6 +70,7 @@ function App() {
             setQuery={setQuery}
             setRandomJoke={setRandomJoke}
             setError={setError}
+            setJoke={setJoke}
           />
 
           <SearchSelect
@@ -65,9 +79,23 @@ function App() {
             setError={setError}
           />
 
-          <SearchButton setQuery={setQuery} setError={setError} />
+          <SearchButton setQuery={setQuery} setError={setError}
+          setInProp={setInProp} />
+          <CheckedHistory
+            checkedHistry={checkedHistry}
+            setCheckedHistry={setCheckedHistry}
+            listOfJokes={listOfJokes}
+          />
         </div>
       </header>
+      <div className="listOfJokes">
+ <ListOfJokes
+          checkedHistry={checkedHistry}
+          joke={joke}
+          setlistOfJokes={setlistOfJokes}
+          listOfJokes={listOfJokes}
+        />
+       </div>
     </div>
   );
 }

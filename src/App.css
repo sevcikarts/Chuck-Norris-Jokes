@@ -1,3 +1,8 @@
+
+body{
+ margin: 0 auto;
+}
+
 .App {
   text-align: center;
 }
@@ -12,9 +17,15 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+ul {
+  padding: 0;
+  margin: 0;  
+  list-style: none;
+  max-width: 900px;
+  
+}
 .container {
-  max-width: 1200px;
+  max-width: 1200px; 
   min-height: 200px;
 }
 
@@ -52,3 +63,66 @@
     color: rgb(194, 51, 51);
   }
 }
+
+li:first-child{
+  display: none;
+}
+li:last-child{
+  margin-bottom: 50px;
+}
+
+
+
+li{
+  font-size: 18px;
+  padding: 5px;
+  margin: 15px;
+}
+ul {
+  padding: 0;
+  margin: 0px;
+  list-style: none;
+  max-width: 900px;
+  
+}
+
+li:hover{
+  padding: 5px;
+  color: rgb(223, 126, 0);
+
+}
+li:nth-child(5n + 1) article {
+  background: #3b9ae1;
+}
+li:nth-child(5n + 2) article {
+  background: #f6be00;
+}
+li:nth-child(5n + 3) article {
+  background: #e64134;
+}
+li:nth-child(5n + 4) article {
+  background: #eb70b1;
+}
+li:nth-child(5n + 5) article {
+  background: #0f1a5f;
+}
+
+.listOfJokes{
+  background-color: #0e1016;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.jokeList{
+  color: #858b9c;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
