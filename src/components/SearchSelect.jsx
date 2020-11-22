@@ -16,11 +16,15 @@ const SearchSelect = React.memo(({ setJoke, setError, setQuery }) => {
     if (query.length > 2) {
       setError("");
       setQuery("");
-      axios
-        .get(`https://api.chucknorris.io/jokes/random?category=${query}`)
-        .then((response) => {
-          setJoke([response.data.value]);
-        });
+      try {
+        axios
+          .get(`https://api.chucknorris.io/jokes/random?category=${query}`)
+          .then((response) => {
+            setJoke([response.data.value]);
+          });
+      } catch (error) {
+        setJoke([]);
+      }
     }
   };
 

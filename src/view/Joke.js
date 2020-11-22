@@ -17,7 +17,7 @@ const Joke = ({ joke, setInProp, inProp }) => {
     }
   };
 
-  return <div>{jokeLoad()}</div>;
+  return <div className="chuckFullJoke">{jokeLoad()}</div>;
 };
 
 export default Joke;

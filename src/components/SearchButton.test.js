@@ -35,4 +35,6 @@ describe('My Connected React-Redux Component', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+
+
 });

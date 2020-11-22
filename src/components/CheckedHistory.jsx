@@ -11,7 +11,6 @@ const CheckedHistory = ({ checkedHistry, setCheckedHistry,listOfJokes }) => {
       });
     }, 500);
   }
-  console.log(document.body.scrollHeight);
 
   return (
     <div>
