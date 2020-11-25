@@ -1,38 +1,30 @@
-import axios from "axios";
-import React from "react";
+import React,{useEffect} from "react";
 import TextField from "@material-ui/core/TextField";
+import { fetchQuery } from "../redux/actions/queryActions";
+import { useSelector, useDispatch } from "react-redux";
 
-const SearchBar = React.memo(({ query, setQuery, setError, setJoke }) => {
+
+const SearchBar = React.memo(({ query, setQuery, setValue, setJoke }) => {
+
+  const userData = useSelector((state) => {
+    return { data: state.queryReducer };
+  });
+        
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setJoke(userData.data.data.value);
+  }, [userData.data.data.value,setJoke]);
+
   const handlechange = (e) => {
     e.preventDefault();
+    setValue()
     setQuery(e.target.value);
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (query.length > 2) {
-      setError("");
-      try {
-        axios
-          .get(`https://api.chucknorris.io/jokes/search?query=${query}`)
-          .then((response) => {
-            let total = response.data.total;
-
-            if (total > 0) {
-              let random = Math.floor(Math.random() * response.data.total);
-              setJoke(response.data.result[random].value);
-            }
-
-            if (total === 0) {
-              setError("expression not found");
-            }
-          });
-      } catch (error) {
-        setJoke();
-      }
-    } else {
-      setError("enter at least 3 characters");
-    }
+   dispatch(fetchQuery(query))
   };
   return (
     <div className="inControll">

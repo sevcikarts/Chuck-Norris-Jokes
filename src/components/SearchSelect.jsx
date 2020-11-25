@@ -6,12 +6,14 @@ import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 
-const SearchSelect = React.memo(({ setJoke, setError, setQuery }) => {
+const SearchSelect = React.memo(({ setJoke, setError, setQuery, value,setValue}) => {
+  
   const userData = useSelector((state) => {
     return { category: state.categoryReducer };
   });
 
   const handleSelect = (e) => {
+    setValue(e.target.value);
     const query = e.target.value;
     if (query.length > 2) {
       setError("");
@@ -21,6 +23,7 @@ const SearchSelect = React.memo(({ setJoke, setError, setQuery }) => {
           .get(`https://api.chucknorris.io/jokes/random?category=${query}`)
           .then((response) => {
             setJoke([response.data.value]);
+            
           });
       } catch (error) {
         setJoke([]);
@@ -38,12 +41,12 @@ const SearchSelect = React.memo(({ setJoke, setError, setQuery }) => {
           displayEmpty
           labelId="label"
           style={{ width: "300px" }}
-          defaultValue={userData.category.category.item || ""}
+          value={value || ""}
           onChange={handleSelect}
         >
-          {userData.category.category.map((value) => (
-            <MenuItem key={value} value={value}>
-              {value}
+          {userData.category.category.map((item) => (
+            <MenuItem key={item} value={item}>
+              {item}
             </MenuItem>
           ))}
         </Select>

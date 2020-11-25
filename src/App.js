@@ -24,7 +24,9 @@ function App() {
     id: ""
   }]);
   const [checkedHistry, setCheckedHistry] = useState(false);
- 
+  const [value, setValue] = useState();
+
+
 
   useEffect(() => {
     dispatch(fetchData());
@@ -36,6 +38,7 @@ function App() {
 
   
   //load random joke
+  
   useEffect(() => {
     setJoke(userData.data.data.value);
   }, [userData.data.data.value]);
@@ -59,15 +62,20 @@ function App() {
             setQuery={setQuery}
             setError={setError}
             setJoke={setJoke}
+            setValue={setValue}
+            
           />
 
           <SearchSelect
             setQuery={setQuery}
             setJoke={setJoke}
             setError={setError}
+            value={value}
+            setValue={setValue}
+e
           />
 
-          <SearchButton setQuery={setQuery} setError={setError}/>
+          <SearchButton setQuery={setQuery} setError={setError} query={query} setValue={setValue} setJoke={setJoke}/>
           <CheckedHistory
             checkedHistry={checkedHistry}
             setCheckedHistry={setCheckedHistry}
