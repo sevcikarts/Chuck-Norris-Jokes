@@ -4,7 +4,7 @@ import { fetchQuery } from "../redux/actions/queryActions";
 import { useSelector, useDispatch } from "react-redux";
 
 
-const SearchBar = React.memo(({ query, setQuery, setValue, setJoke }) => {
+const SearchBar = React.memo(({ query, setQuery, setValue, setJoke ,setError}) => {
 
   const userData = useSelector((state) => {
     return { data: state.queryReducer };
@@ -24,7 +24,12 @@ const SearchBar = React.memo(({ query, setQuery, setValue, setJoke }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-   dispatch(fetchQuery(query))
+    if(query.length>2){
+  dispatch(fetchQuery(query))
+  setError("")
+} else{
+  setError("enter at least 3 characters")
+}
   };
   return (
     <div className="inControll">

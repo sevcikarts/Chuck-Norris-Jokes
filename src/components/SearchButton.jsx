@@ -17,12 +17,19 @@ const SearchButton = ({ setQuery, setError, query, setValue, setJoke, value }) =
     setJoke(userData.data.data.value);
   }, [userData.data.data.value, setJoke]);
 
-  const randomJokeByQuery = () => {
-    dispatch(fetchData(), setQuery(""), setError(""), setValue())
-  }
-
   const randomJoke = () => {
-    dispatch(fetchQuery(query), setValue(), setError(""))
+    
+
+    dispatch(fetchData(), setQuery(""), setError(""), setValue())}
+    
+  
+
+  const randomJokeByQuery = () => {
+    if(query.length>2){
+    dispatch(fetchQuery(query), setValue(), setError(""))}
+    else{
+      setError("enter at least 3 characters")
+    }
   }
 
   return (
@@ -35,7 +42,7 @@ const SearchButton = ({ setQuery, setError, query, setValue, setJoke, value }) =
         variant="contained"
         color="primary"
         style={{ width: "300px", fontSize: "20px" }}
-        onClick={query ? () => randomJoke() : () => randomJokeByQuery()}
+        onClick={query ? () => randomJokeByQuery() : () => randomJoke()}
       >
         {query ? "Random Joke by query" : (value ? "Random Joke by category" : "Random Joke")}
       </Button>
@@ -45,7 +52,7 @@ const SearchButton = ({ setQuery, setError, query, setValue, setJoke, value }) =
         size="large"
         variant="contained"
         color="secondary"
-        style={{ width: "80px", fontSize: "20px" }}
+        style={{ width: "80px", fontSize: "15px" }}
         onClick={ () => setQuery("") }
       >
         clear
