@@ -14,7 +14,7 @@ const SearchBar = React.memo(({ query, setQuery, setValue, setJoke ,setError}) =
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setJoke([userData.data.data.value]);
+    setJoke(userData.data.data.value);
   }, [userData.data.data.value,setJoke]);
 
 

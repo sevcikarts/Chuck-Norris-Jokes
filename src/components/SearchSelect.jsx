@@ -14,7 +14,7 @@ const SearchSelect = React.memo(({ setJoke, setError, setQuery, value,setValue})
   });
 
   useEffect(() => {
-    setJoke(userData.data.data);
+    setJoke(userData.data.data); 
   }, [userData.data.data,setJoke]);
 
 

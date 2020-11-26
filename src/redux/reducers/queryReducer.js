@@ -5,7 +5,7 @@ import {
   } from "../types/dataTypes";
   
   const initialState = {
-    data: "",
+    data: [""],
     
   };
   
