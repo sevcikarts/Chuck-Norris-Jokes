@@ -16,6 +16,7 @@ const SearchBar = React.memo(({ query, setQuery, setValue, setJoke ,setError}) =
     setJoke(userData.data.data.value);
   }, [userData.data.data.value,setJoke]);
 
+
   const handlechange = (e) => {
     e.preventDefault();
     setValue()
