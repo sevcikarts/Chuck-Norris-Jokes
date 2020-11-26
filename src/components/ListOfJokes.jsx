@@ -3,7 +3,7 @@ import logo from "../img/arrow.png";
 
 const ListOfJokes = ({ joke, setlistOfJokes, listOfJokes, checkedHistry }) => {
   useEffect(() => {
-    if (joke && joke != "expression not found" )
+    if (joke && joke !== "expression not found" )
       setlistOfJokes((state) => [
         ...state,
         {
@@ -12,8 +12,6 @@ const ListOfJokes = ({ joke, setlistOfJokes, listOfJokes, checkedHistry }) => {
         },
       ]);
   }, [joke, setlistOfJokes]);
-
-  console.log(listOfJokes)
 
   return (
     <div>
