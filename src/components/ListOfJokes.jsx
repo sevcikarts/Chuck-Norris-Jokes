@@ -3,7 +3,7 @@ import logo from "../img/arrow.png";
 
 const ListOfJokes = ({ joke, setlistOfJokes, listOfJokes, checkedHistry }) => {
   useEffect(() => {
-    if (joke && joke !== "expression not found" )
+    if (joke && joke.toString()!=="expression not found")
       setlistOfJokes((state) => [
         ...state,
         {
