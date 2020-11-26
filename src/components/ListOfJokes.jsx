@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import logo from "../img/arrow.png";
 
 const ListOfJokes = ({ joke, setlistOfJokes, listOfJokes, checkedHistry }) => {
-
   useEffect(() => {
     if (joke)
       setlistOfJokes((state) => [
@@ -13,6 +12,8 @@ const ListOfJokes = ({ joke, setlistOfJokes, listOfJokes, checkedHistry }) => {
         },
       ]);
   }, [joke, setlistOfJokes]);
+
+  console.log(listOfJokes)
 
   return (
     <div>

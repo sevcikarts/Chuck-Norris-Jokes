@@ -1,35 +1,33 @@
-import axios from "axios";
-import React from "react";
-import { useSelector } from "react-redux";
+
+import React,{ useEffect } from "react";
+import { useSelector,useDispatch } from "react-redux";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
+import { fetchByCategory } from "../redux/actions/queryActions";
 
 const SearchSelect = React.memo(({ setJoke, setError, setQuery, value,setValue}) => {
-  
+  const dispatch = useDispatch();
   const userData = useSelector((state) => {
-    return { category: state.categoryReducer };
+    return { category: state.categoryReducer, data: state.queryReducer };
   });
+
+  useEffect(() => {
+    setJoke(userData.data.data);
+  }, [userData.data.data,setJoke]);
+
+
 
   const handleSelect = (e) => {
     setValue(e.target.value);
     const query = e.target.value;
-    if (query.length > 2) {
       setError("");
+      dispatch(fetchByCategory(query))
       setQuery("");
-      try {
-        axios
-          .get(`https://api.chucknorris.io/jokes/random?category=${query}`)
-          .then((response) => {
-            setJoke([response.data.value]);
-            
-          });
-      } catch (error) {
-        setJoke([]);
-      }
+      
     }
-  };
+  ;
 
   return (
     <div className="inControll">

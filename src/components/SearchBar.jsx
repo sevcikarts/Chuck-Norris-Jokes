@@ -10,6 +10,7 @@ const SearchBar = React.memo(({ query, setQuery, setValue, setJoke ,setError}) =
     return { data: state.queryReducer };
   });
         
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const SearchBar = React.memo(({ query, setQuery, setValue, setJoke ,setError}) =
   };
   return (
     <div className="inControll">
-      <form noValidate autoComplete="off" onSubmit={handleSearch}>
+      <form  autoComplete="off" onSubmit={handleSearch}>
         <TextField
           onChange={handlechange}
           style={{ width: "300px" }}
