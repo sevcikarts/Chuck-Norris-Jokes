@@ -20,7 +20,7 @@ function App() {
   const [joke, setJoke] = useState("");
   const [error, setError] = useState("");
   const [listOfJokes, setlistOfJokes] = useState([{
-    joke:"",
+    joke: "",
     id: ""
   }]);
   const [checkedHistry, setCheckedHistry] = useState(false);
@@ -36,23 +36,23 @@ function App() {
     dispatch(fetchCategory());
   }, [dispatch]);
 
-  
+
   //load random joke
-  
+
   useEffect(() => {
     setJoke(userData.data.data.value);
   }, [userData.data.data.value]);
 
   return (
     <div className="App">
-      <header className="App-header">  
-     
+      <header className="App-header">
+
         <div className="container">
-       
-         <Joke joke={joke} setlistOfJokes={setlistOfJokes} 
+
+          <Joke joke={joke} setlistOfJokes={setlistOfJokes}
           />
           <div className="chuck">
-            
+
             <Error error={error} />
           </div>
         </div>
@@ -63,7 +63,7 @@ function App() {
             setError={setError}
             setJoke={setJoke}
             setValue={setValue}
-            
+
           />
 
           <SearchSelect
@@ -72,25 +72,28 @@ function App() {
             setError={setError}
             value={value}
             setValue={setValue}
-e
+            e
           />
 
-          <SearchButton setQuery={setQuery} setError={setError} query={query} setValue={setValue} setJoke={setJoke}/>
+          <SearchButton setQuery={setQuery} setError={setError} query={query} setValue={setValue} setJoke={setJoke}
+            value={value} />
           <CheckedHistory
             checkedHistry={checkedHistry}
             setCheckedHistry={setCheckedHistry}
             listOfJokes={listOfJokes}
+
+
           />
         </div>
       </header>
       <div className="listOfJokes">
- <ListOfJokes
+        <ListOfJokes
           checkedHistry={checkedHistry}
           joke={joke}
           setlistOfJokes={setlistOfJokes}
           listOfJokes={listOfJokes}
         />
-       </div>
+      </div>
     </div>
   );
 }
