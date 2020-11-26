@@ -66,7 +66,7 @@ const SearchButton = ({
             : value
             ? "Random Joke by category"
             : "Random Joke"}
-        </Button>
+        </Button> 
         {query ? (
           <Button
             className="button"
@@ -78,7 +78,7 @@ const SearchButton = ({
           >
             clear
           </Button>
-        ) : value ? (
+        ) : value ? ( 
           <Button
             className="button"
             size="large"
