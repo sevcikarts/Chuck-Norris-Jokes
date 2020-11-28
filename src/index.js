@@ -14,7 +14,12 @@ export const theme = unstable_createMuiStrictModeTheme({
     type: "dark",
     primary: {
       main: orange[500],
-      dark: orange[800],
+      dark: orange[700],
+    
+    },
+    secondary: {
+      main: orange[900],
+      dark: orange[1000],
     
     }
   },

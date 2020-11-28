@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header"> 
         <div className="container">
           <Joke joke={joke} setlistOfJokes={setlistOfJokes} />
           <div className="chuck">
@@ -84,6 +84,7 @@ function App() {
           />
         </div>
       </header>
+     
       <div className="listOfJokes">
         <ListOfJokes
           checkedHistry={checkedHistry}
