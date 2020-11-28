@@ -11,6 +11,7 @@ export const fetchQuery = (query) => {
 
         if (total > 0) {
           let random = Math.floor(Math.random() * response.data.total);
+          dispatch(fetchDataSuccess(""));
           dispatch(fetchDataSuccess(response.data.result[random]));
         }
         if (total === 0) {

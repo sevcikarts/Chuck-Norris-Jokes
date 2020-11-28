@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import logo from "../img/arrow.png";
 
 const ListOfJokes = ({ joke, setlistOfJokes, listOfJokes, checkedHistry }) => {
+
   useEffect(() => {
-    if (joke && joke.toString()!=="expression not found")
+    if (joke && joke.toString() !== "expression not found")
       setlistOfJokes((state) => [
         ...state,
         {
-          joke: joke,
+          jokes: joke,
           id: new Date().getTime(),
         },
       ]);
@@ -19,7 +20,7 @@ const ListOfJokes = ({ joke, setlistOfJokes, listOfJokes, checkedHistry }) => {
         <img src={logo} alt="Logo" className="arrow" />
         {listOfJokes.map((item) => (
           <li key={item.id} className="jokeList">
-            {item.joke}
+            {item.jokes}
           </li>
         ))}
       </ul>
